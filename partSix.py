@@ -37,6 +37,15 @@ class Neural_Network(object):
         self.a2 = self.sigmoid(self.z2)
         self.z3 = np.dot(self.a2, self.W2)
         yHat = self.sigmoid(self.z3) 
+        
+        print(f'X \n{X}\n')
+        print(f'self.W1 \n{self.W1}\n')
+        print(f'self.z2 \n{self.z2}\n')
+        print(f'self.a2 \n{self.a2}\n')
+        print(f'self.W2 \n{self.W2}\n')
+        print(f'self.z3 \n{self.z3}\n')
+        print(f'yHat \n{yHat}\n') 
+        print('\n================================') 
         return yHat
         
     def sigmoid(self, z):
@@ -51,6 +60,7 @@ class Neural_Network(object):
         #Compute cost for given X,y, use weights already stored in class.
         self.yHat = self.forward(X)
         J = 0.5*sum((y-self.yHat)**2)
+        # print(f'J {J}')
         return J
         
     def costFunctionPrime(self, X, y):
@@ -61,8 +71,17 @@ class Neural_Network(object):
         dJdW2 = np.dot(self.a2.T, delta3)
         
         delta2 = np.dot(delta3, self.W2.T)*self.sigmoidPrime(self.z2)
-        dJdW1 = np.dot(X.T, delta2)  
+        dJdW1 = np.dot(X.T, delta2)
         
+        print(f'self.sigmoidPrime(self.z3) \n{self.sigmoidPrime(self.z3)}\n')
+        print(f'delta3 \n{delta3}\n')
+        print(f'self.a2.T \n{self.a2.T}\n')
+        print(f'dJdW2 \n{dJdW2}\n')
+        print(f'self.W2.T \n{self.W2.T}\n')
+        print(f'self.sigmoidPrime(self.z2) \n{self.sigmoidPrime(self.z2)}\n')
+        print(f'delta2 \n{delta2}\n')
+        print(f'dJdW1 \n{dJdW1}\n') 
+        print('\n================================') 
         return dJdW1, dJdW2
     
     #Helper Functions for interacting with other classes:
@@ -144,4 +163,10 @@ class trainer(object):
 
         self.N.setParams(_res.x)
         self.optimizationResults = _res
+
+
+
+
+objtrainer = trainer(Neural_Network())
+objtrainer.train(X,y, )
 
