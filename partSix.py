@@ -80,6 +80,7 @@ class Neural_Network(object):
         print(f'self.W2.T \n{self.W2.T}\n')
         print(f'self.sigmoidPrime(self.z2) \n{self.sigmoidPrime(self.z2)}\n')
         print(f'delta2 \n{delta2}\n')
+        print(f'X.T \n{X.T}\n') 
         print(f'dJdW1 \n{dJdW1}\n') 
         print('\n================================') 
         return dJdW1, dJdW2
